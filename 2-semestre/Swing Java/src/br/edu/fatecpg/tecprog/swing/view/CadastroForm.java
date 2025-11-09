@@ -1,4 +1,5 @@
 package br.edu.fatecpg.tecprog.swing.view;
+import br.edu.fatecpg.tecprog.swing.model.*;
 
 import java.awt.EventQueue;
 
@@ -21,9 +22,9 @@ public class CadastroForm extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txt_nome;
-	public String nome;
-	public String idade;
-	public String sexo;
+	private JLabel lbl_nome_resultado;
+	private JLabel lbl_idade_resultado;
+	private JLabel lbl_sexo_resultado;
 
 	/**
 	 * Launch the application.
@@ -46,7 +47,7 @@ public class CadastroForm extends JFrame {
 	 */
 	public CadastroForm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 300, 300);
+		setBounds(100, 100, 300, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -96,7 +97,7 @@ public class CadastroForm extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nome = txt_nome.getText();
-				Object idade = spin_idade.getValue();
+				String idade = spin_idade.getValue().toString();
 				String selecao = "";
 			    if (radio_masc.isSelected()) {
 			        selecao = "Masculino";
@@ -105,14 +106,32 @@ public class CadastroForm extends JFrame {
 			        selecao = "Feminino";
 			    }
 				
-				CadastroForm.this.nome = nome;
-				CadastroForm.this.idade = idade.toString();
-				CadastroForm.this.sexo = selecao;
+			    Cliente cliente = new Cliente(nome, idade, selecao);
+			    
+			    lbl_nome_resultado.setText("Nome: " + cliente.getNome());
+		        lbl_idade_resultado.setText("Idade: " + cliente.getIdade());
+		        lbl_sexo_resultado.setText("Sexo: " + cliente.getSexo());
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setBounds(170, 102, 106, 42);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblResumo = new JLabel("--- Dados Cadastrados ---");
+		lblResumo.setBounds(10, 272, 200, 20);
+		contentPane.add(lblResumo);
+
+		lbl_nome_resultado = new JLabel("Nome: -");
+		lbl_nome_resultado.setBounds(10, 292, 200, 20);
+		contentPane.add(lbl_nome_resultado);
+
+		lbl_idade_resultado = new JLabel("Idade: -");
+		lbl_idade_resultado.setBounds(10, 312, 200, 20);
+		contentPane.add(lbl_idade_resultado);
+
+		lbl_sexo_resultado = new JLabel("Sexo: -");
+		lbl_sexo_resultado.setBounds(10, 332, 200, 20);
+		contentPane.add(lbl_sexo_resultado);
 
 	}
 }
