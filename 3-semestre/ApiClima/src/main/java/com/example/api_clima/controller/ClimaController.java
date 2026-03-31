@@ -1,6 +1,6 @@
 package com.example.api_clima.controller;
 
-import com.example.api_clima.model.Clima;
+import com.example.api_clima.model.ClimaJson;
 import com.example.api_clima.service.ClimaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +22,8 @@ public class ClimaController {
     }
 
     @GetMapping("/buscar")
-    public String buscar(@RequestParam("clima") String clima, Model model) {
-        Clima resultado = climaService.buscarClima(clima);
+    public String buscar(@RequestParam("latitude") String lat, @RequestParam("longitude") String lon, Model model) {
+        ClimaJson resultado = climaService.buscarClima(lat, lon);
         model.addAttribute("clima", resultado);
         return "resultado";
     }

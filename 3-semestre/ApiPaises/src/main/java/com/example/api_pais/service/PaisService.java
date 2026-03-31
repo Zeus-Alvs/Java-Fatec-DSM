@@ -12,9 +12,6 @@ public class PaisService {
     @Value("${pais.api.url}")
     private String apiUrl;
 
-    @Value("${pais.api.key}")
-    private String apiKey;
-
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 

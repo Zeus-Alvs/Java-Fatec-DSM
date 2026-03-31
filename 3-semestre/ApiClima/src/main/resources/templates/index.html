@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,10 +40,11 @@
 </head>
 <body>
     <h1>Previsão de Clima</h1>
-    <p>Digite o nome de um país para procurar suas informações na API..</p>
+    <p>Digite as coordenadas para procurar suas informações na API..</p>
     <form action="/buscar" method="get">
-        <input type="text" name="clima" placeholder="Digite o nome do país..." required />
-        <button type="submit">Buscar</button>
+        <input type="text" name="longitude" placeholder="Ex: -46.63" required />
+        <input type="text" name="latitude" placeholder="Ex: -23.55" required />
+        <button type="submit">Buscar Clima</button>
     </form>
 </body>
 </html>

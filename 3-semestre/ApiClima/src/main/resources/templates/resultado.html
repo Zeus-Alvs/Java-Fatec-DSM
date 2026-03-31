@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,22 +25,21 @@
         <h1 th:text="${clima.timezone}">Nome do País</h1>
 
 
-        <p><strong>Capital:</strong>
-            <span th:text="${clima.temperature}"></span>
+        <p><strong>Temperatura:</strong>
+            <span th:text="${clima.current.temperature}"></span>
         </p>
 
-        <p><strong>Sub-região:</strong> <span th:text="${clima.weather}"></span></p>
+        <p><strong>Clima:</strong> <span th:text="${clima.current.descricao}"></span></p>
 
-        <p><strong>População:</strong>
-            <span th:text="${clima.windspeed}"></span>
+        <p><strong>Vento:</strong>
+            <span th:text="${clima.current.windspeed}"></span>
         </p>
 
     </div>
 </div>
 
 <div th:if="${clima == null}" style="color: red; padding: 20px; background: #fee; border-radius: 8px;">
-    <h2>País não encontrado!</h2>
-    <p>Verifique se o nome foi digitado corretamente em inglês.</p>
+    <h2>Coordenadas Invalidas!</h2>
 </div>
 </body>
 </html>
